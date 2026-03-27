@@ -1,0 +1,28 @@
+name: build windows app
+on: [push]
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: setup node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: install dependencies
+        run: npm install
+
+      - name: build electron app
+        run: npm run electron:build
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: barverify-exe
+          path: dist-electron/*.exe
