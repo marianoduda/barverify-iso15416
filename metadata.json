@@ -1,0 +1,5 @@
+{
+  "name": "BarVerify ISO15416",
+  "description": "Sistema de verificação de qualidade de códigos de barras para a Engenharia La Rondine.",
+  "requestFramePermissions": ["camera"]
+}
